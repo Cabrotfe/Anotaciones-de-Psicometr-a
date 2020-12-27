@@ -6,7 +6,8 @@
 
 # este script va a incluir algunas cosas de psicometría:
 
-pacman::p_load(tidyverse, mirt, corrplot,assertr,sjPlot)
+pacman::p_load(tidyverse, mirt, corrplot,assertr,sjPlot, lavaan)
+set.seed(1234)
 
 
 
@@ -282,13 +283,14 @@ plot(lavPredict(cfa_1f_model, method = "EBM"), rowSums(base_datos))
 
 ## Por ejemplo, con el primer ítem tenemos:
 
-#tresh = -1.208.
-#beta = 0.903
+#tresh = -0.963
+#beta = 0.699
 
 f1 = -3:3
-1-pnorm(-1.208-0.903*f1)
+1-pnorm(-0.963-0.699*f1)
 
-####
+
+
 ######33 ¿Cómo estamos modelando los datos?
 ## Estamos modelando una matriz de correlaciones, de modo que podemos
 ## reproducir la matriz de varianza covarianza con los factor loadings:
