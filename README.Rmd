@@ -4,6 +4,7 @@ output: github_document
 ---
 
 
+Vamos a ocupar los siguientes paquetes:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -11,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 pacman::p_load(tidyverse, mirt, corrplot,assertr,sjPlot, lavaan)
+set.seed(1234)
 ```
 
 ## Simulación de datos

@@ -1,8 +1,11 @@
 Análisis Psicométricos
 ================
 
+Vamos a ocupar los siguientes paquetes:
+
 ``` r
 pacman::p_load(tidyverse, mirt, corrplot,assertr,sjPlot, lavaan)
+set.seed(1234)
 ```
 
 Simulación de datos
@@ -35,19 +38,19 @@ head(base_datos)
 ```
 
     ##   Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9 Item_10
-    ## 1      1      1      1      1      1      1      1      1      1       1
-    ## 2      1      1      1      0      1      0      1      1      1       1
-    ## 3      1      1      1      1      1      1      0      1      0       0
-    ## 4      1      1      1      1      1      0      1      1      1       1
-    ## 5      1      0      1      1      1      0      1      1      1       1
-    ## 6      1      1      1      1      1      0      1      1      1       1
+    ## 1      0      1      0      0      0      0      0      0      0       0
+    ## 2      1      1      1      1      1      1      1      1      1       0
+    ## 3      1      1      1      1      1      0      0      1      1       1
+    ## 4      0      0      1      1      0      0      0      0      0       1
+    ## 5      1      0      1      1      1      1      1      0      1       0
+    ## 6      1      1      0      1      1      1      0      1      1       1
     ##   Item_11 Item_12 Item_13 Item_14 Item_15
-    ## 1       0       0       1       1       1
-    ## 2       1       1       1       1       1
-    ## 3       0       0       0       0       0
-    ## 4       1       1       0       0       1
-    ## 5       1       1       1       0       0
-    ## 6       1       0       1       0       0
+    ## 1       0       1       1       0       0
+    ## 2       0       0       0       0       0
+    ## 3       1       0       0       1       1
+    ## 4       0       0       1       0       1
+    ## 5       0       0       0       1       0
+    ## 6       1       1       0       1       1
 
 Descriptivos
 ============
@@ -96,22 +99,22 @@ Item\_1
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.82
+0.78
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.39
+0.41
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
--1.64
+-1.38
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.82
+0.78
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.352
+0.318
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.566
+0.587
 </td>
 </tr>
 <tr>
@@ -122,22 +125,22 @@ Item\_2
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.84
+0.83
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.37
+0.38
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
--1.82
+-1.73
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.84
+0.83
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.295
+0.368
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.576
+0.581
 </td>
 </tr>
 <tr>
@@ -148,22 +151,22 @@ Item\_3
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.91
+0.9
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.29
+0.3
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
--2.85
+-2.61
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.91
+0.9
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.167
+0.281
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.594
+0.596
 </td>
 </tr>
 <tr>
@@ -174,22 +177,22 @@ Item\_4
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.94
+0.9
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.24
+0.3
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
--3.6
+-2.66
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.94
+0.9
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.192
+0.281
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.592
+0.597
 </td>
 </tr>
 <tr>
@@ -200,22 +203,22 @@ Item\_5
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.91
+0.92
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.29
+0.26
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
--2.85
+-3.22
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.91
+0.92
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.254
+0.247
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.585
+0.602
 </td>
 </tr>
 <tr>
@@ -226,22 +229,22 @@ Item\_6
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.63
+0.64
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
 0.48
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
--0.53
+-0.58
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.63
+0.64
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.255
+0.164
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.58
+0.612
 </td>
 </tr>
 <tr>
@@ -252,22 +255,22 @@ Item\_7
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.66
+0.71
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.47
+0.45
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
--0.67
+-0.92
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.66
+0.71
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.28
+0.209
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.576
+0.604
 </td>
 </tr>
 <tr>
@@ -278,22 +281,22 @@ Item\_8
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.74
+0.72
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.44
+0.45
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
--1.12
+-1
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.74
+0.72
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.362
+0.301
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.562
+0.589
 </td>
 </tr>
 <tr>
@@ -304,22 +307,22 @@ Item\_9
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.6
+0.62
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
 0.49
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
--0.4
+-0.48
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.6
+0.62
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.29
+0.311
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.574
+0.586
 </td>
 </tr>
 <tr>
@@ -330,22 +333,22 @@ Item\_10
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.6
+0.56
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.49
+0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
--0.42
+-0.26
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.6
+0.56
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.336
+0.325
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.564
+0.583
 </td>
 </tr>
 <tr>
@@ -356,22 +359,22 @@ Item\_11
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.5
+0.48
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
 0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0
+0.09
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.5
+0.48
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.075
+0.205
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.615
+0.606
 </td>
 </tr>
 <tr>
@@ -382,22 +385,22 @@ Item\_12
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.43
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
 0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.28
+0.26
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.43
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.035
+0.137
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.622
+0.618
 </td>
 </tr>
 <tr>
@@ -408,22 +411,22 @@ Item\_13
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.41
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.49
+0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.35
+0.26
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; ">
-0.41
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col7">
-0.158
+0.11
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; col8">
-0.599
+0.623
 </td>
 </tr>
 <tr>
@@ -434,22 +437,22 @@ Item\_14
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.42
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.49
+0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.34
+0.23
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; ">
-0.42
+0.44
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col7">
-0.234
+0.176
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; background-color:#f2f2f2; col8">
-0.584
+0.611
 </td>
 </tr>
 <tr>
@@ -460,27 +463,27 @@ Item\_15
 0.00 %
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
-0.47
+0.51
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
 0.5
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
-0.11
+-0.05
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; ">
-0.47
+0.51
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; col7">
-0.299
+0.32
 </td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center; border-bottom: double; col8">
-0.572
+0.584
 </td>
 </tr>
 <tr>
 <td colspan="9" style="font-style:italic; border-top:double black; text-align:right;">
-Mean inter-item-correlation=0.096 · Cronbach's α=0.601
+Mean inter-item-correlation=0.104 · Cronbach's α=0.615
 </td>
 </tr>
 </table>
@@ -494,19 +497,19 @@ head(base_datos)
 ```
 
     ##   Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9 Item_10
-    ## 1      1      1      1      1      1      1      1      1      1       1
-    ## 2      1      1      1      0      1      0      1      1      1       1
-    ## 3      1      1      1      1      1      1      0      1      0       0
-    ## 4      1      1      1      1      1      0      1      1      1       1
-    ## 5      1      0      1      1      1      0      1      1      1       1
-    ## 6      1      1      1      1      1      0      1      1      1       1
+    ## 1      0      1      0      0      0      0      0      0      0       0
+    ## 2      1      1      1      1      1      1      1      1      1       0
+    ## 3      1      1      1      1      1      0      0      1      1       1
+    ## 4      0      0      1      1      0      0      0      0      0       1
+    ## 5      1      0      1      1      1      1      1      0      1       0
+    ## 6      1      1      0      1      1      1      0      1      1       1
     ##   Item_11 Item_12 Item_13 Item_14 Item_15
-    ## 1       0       0       1       1       1
-    ## 2       1       1       1       1       1
-    ## 3       0       0       0       0       0
-    ## 4       1       1       0       0       1
-    ## 5       1       1       1       0       0
-    ## 6       1       0       1       0       0
+    ## 1       0       1       1       0       0
+    ## 2       0       0       0       0       0
+    ## 3       1       0       0       1       1
+    ## 4       0       0       1       0       1
+    ## 5       0       0       0       1       0
+    ## 6       1       1       0       1       1
 
 Podríamos crear una función para ordenar ítems:
 
@@ -570,21 +573,21 @@ lavaan::fitted(cfa_ctt_model_paralel)
 
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
-    ## Item_1  0.191                                                         
-    ## Item_2  0.017  0.191                                                  
-    ## Item_3  0.017  0.017  0.191                                           
-    ## Item_4  0.017  0.017  0.017  0.191                                    
-    ## Item_5  0.017  0.017  0.017  0.017  0.191                             
-    ## Item_6  0.017  0.017  0.017  0.017  0.017  0.191                      
-    ## Item_7  0.017  0.017  0.017  0.017  0.017  0.017  0.191               
-    ## Item_8  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.191        
-    ## Item_9  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.191 
-    ## Item_10 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
-    ## Item_11 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
-    ## Item_12 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
-    ## Item_13 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
-    ## Item_14 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
-    ## Item_15 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_1  0.195                                                         
+    ## Item_2  0.019  0.195                                                  
+    ## Item_3  0.019  0.019  0.195                                           
+    ## Item_4  0.019  0.019  0.019  0.195                                    
+    ## Item_5  0.019  0.019  0.019  0.019  0.195                             
+    ## Item_6  0.019  0.019  0.019  0.019  0.019  0.195                      
+    ## Item_7  0.019  0.019  0.019  0.019  0.019  0.019  0.195               
+    ## Item_8  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.195        
+    ## Item_9  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.195 
+    ## Item_10 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
+    ## Item_11 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
+    ## Item_12 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
+    ## Item_13 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
+    ## Item_14 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
+    ## Item_15 0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019  0.019 
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -595,12 +598,12 @@ lavaan::fitted(cfa_ctt_model_paralel)
     ## Item_7                                           
     ## Item_8                                           
     ## Item_9                                           
-    ## Item_10 0.191                                    
-    ## Item_11 0.017  0.191                             
-    ## Item_12 0.017  0.017  0.191                      
-    ## Item_13 0.017  0.017  0.017  0.191               
-    ## Item_14 0.017  0.017  0.017  0.017  0.191        
-    ## Item_15 0.017  0.017  0.017  0.017  0.017  0.191
+    ## Item_10 0.195                                    
+    ## Item_11 0.019  0.195                             
+    ## Item_12 0.019  0.019  0.195                      
+    ## Item_13 0.019  0.019  0.019  0.195               
+    ## Item_14 0.019  0.019  0.019  0.019  0.195        
+    ## Item_15 0.019  0.019  0.019  0.019  0.019  0.195
 
 la pregunta es, ¿es esta matriz similar a la matriz original? Podemos asumir que en la población, esta es la matriz que real, ¿en cuánto difiere esa matriz con esta?
 
@@ -615,21 +618,21 @@ residuals(cfa_ctt_model_paralel)
     ## 
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
-    ## Item_1  -0.042                                                        
-    ## Item_2   0.015 -0.055                                                 
-    ## Item_3  -0.006 -0.010 -0.109                                          
-    ## Item_4  -0.004 -0.008 -0.016 -0.132                                   
-    ## Item_5   0.001 -0.007 -0.001 -0.008 -0.109                            
-    ## Item_6   0.005  0.012  0.004 -0.011 -0.001  0.043                     
-    ## Item_7   0.011 -0.010 -0.006 -0.004 -0.001  0.028  0.033              
-    ## Item_8   0.011  0.014 -0.003 -0.003  0.002  0.013  0.026 -0.001       
-    ## Item_9   0.009  0.012 -0.016 -0.008 -0.001  0.025  0.006  0.017  0.049
-    ## Item_10  0.013  0.010 -0.003 -0.005  0.014 -0.016  0.030  0.021  0.023
-    ## Item_11 -0.019 -0.016 -0.017 -0.014 -0.017 -0.029  0.000 -0.005  0.009
-    ## Item_12  0.004 -0.015 -0.016 -0.021 -0.019 -0.002 -0.009 -0.008 -0.027
-    ## Item_13  0.010  0.000 -0.010 -0.014 -0.015 -0.006 -0.007 -0.002  0.001
-    ## Item_14  0.016  0.005 -0.018 -0.004 -0.013  0.007  0.009  0.018  0.012
-    ## Item_15  0.016  0.017 -0.007 -0.010  0.000  0.021 -0.002  0.028  0.030
+    ## Item_1  -0.026                                                        
+    ## Item_2   0.012 -0.052                                                 
+    ## Item_3  -0.003  0.004 -0.103                                          
+    ## Item_4   0.002 -0.008 -0.001 -0.105                                   
+    ## Item_5   0.000 -0.002 -0.011 -0.016 -0.125                            
+    ## Item_6   0.001  0.009 -0.013 -0.005 -0.001  0.036                     
+    ## Item_7  -0.001  0.006 -0.006 -0.003  0.002 -0.018  0.011              
+    ## Item_8   0.002  0.006  0.001  0.009  0.006  0.002  0.007  0.005       
+    ## Item_9   0.017  0.010 -0.008  0.006 -0.002  0.004  0.003  0.019  0.042
+    ## Item_10  0.023  0.019  0.014  0.013 -0.014 -0.003 -0.010  0.009  0.032
+    ## Item_11  0.011 -0.004 -0.005 -0.003 -0.003 -0.014  0.000  0.000  0.009
+    ## Item_12 -0.013 -0.004 -0.014 -0.010 -0.016 -0.002 -0.003  0.006 -0.010
+    ## Item_13 -0.018  0.014 -0.007 -0.023 -0.014 -0.012 -0.008 -0.009 -0.012
+    ## Item_14  0.001 -0.002 -0.001 -0.012 -0.018 -0.012 -0.008 -0.002  0.006
+    ## Item_15  0.024  0.020  0.004  0.003 -0.008 -0.002  0.012  0.012  0.032
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -640,12 +643,12 @@ residuals(cfa_ctt_model_paralel)
     ## Item_7                                           
     ## Item_8                                           
     ## Item_9                                           
-    ## Item_10  0.048                                   
-    ## Item_11  0.011  0.059                            
-    ## Item_12 -0.014 -0.025  0.054                     
-    ## Item_13  0.012 -0.011 -0.010  0.051              
-    ## Item_14  0.025 -0.010 -0.036  0.006  0.052       
-    ## Item_15  0.020 -0.009 -0.003 -0.007  0.014  0.058
+    ## Item_10  0.051                                   
+    ## Item_11  0.006  0.055                            
+    ## Item_12 -0.010  0.009  0.051                     
+    ## Item_13  0.030 -0.029 -0.023  0.051              
+    ## Item_14  0.011 -0.003 -0.006 -0.009  0.052       
+    ## Item_15  0.004  0.017  0.003 -0.007  0.009  0.055
 
 Podemos atender a otra cosa, en este modelo los valores del factor son lineales con los puntajes observados. Es posible estimar, desde los puntajes observados, el puntaje del factor.
 
@@ -665,13 +668,13 @@ tot_covar=sum(var(base_datos)) - sum(diag(var(base_datos))) ## Suma de todas las
 tot_covar/(15*14) ## esta es la covarianza promedio. Sería T. Se asume, que hay 15^2 Ts en la matriz
 ```
 
-    ## [1] 0.01749194
+    ## [1] 0.01878918
 
 ``` r
 tot_covar*15^2/((15*14)*sum(var(base_datos))) ## así, tenemos el total es Ts de la matriz, dividido por la varianza total. Esto es el alpha
 ```
 
-    ## [1] 0.6012594
+    ## [1] 0.6152628
 
 La diagnonal de la matriz tiene varianza verdadera y varianza error. Lo que está fuera de la diagonal es varianza verdadera (covarianzas)
 
@@ -685,21 +688,21 @@ lavaan::fitted(cfa_ctt_model_tau) ## la pregunta es, ¿es esta matriz similar a 
 
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
-    ## Item_1  0.141                                                         
-    ## Item_2  0.014  0.133                                                  
-    ## Item_3  0.014  0.014  0.089                                           
-    ## Item_4  0.014  0.014  0.014  0.066                                    
-    ## Item_5  0.014  0.014  0.014  0.014  0.083                             
-    ## Item_6  0.014  0.014  0.014  0.014  0.014  0.227                      
-    ## Item_7  0.014  0.014  0.014  0.014  0.014  0.014  0.217               
-    ## Item_8  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.178        
-    ## Item_9  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.233 
-    ## Item_10 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
-    ## Item_11 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
-    ## Item_12 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
-    ## Item_13 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
-    ## Item_14 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
-    ## Item_15 0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014  0.014 
+    ## Item_1  0.162                                                         
+    ## Item_2  0.017  0.136                                                  
+    ## Item_3  0.017  0.017  0.095                                           
+    ## Item_4  0.017  0.017  0.017  0.094                                    
+    ## Item_5  0.017  0.017  0.017  0.017  0.077                             
+    ## Item_6  0.017  0.017  0.017  0.017  0.017  0.233                      
+    ## Item_7  0.017  0.017  0.017  0.017  0.017  0.017  0.205               
+    ## Item_8  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.190        
+    ## Item_9  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.227 
+    ## Item_10 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_11 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_12 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_13 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_14 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
+    ## Item_15 0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017  0.017 
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -710,12 +713,12 @@ lavaan::fitted(cfa_ctt_model_tau) ## la pregunta es, ¿es esta matriz similar a 
     ## Item_7                                           
     ## Item_8                                           
     ## Item_9                                           
-    ## Item_10 0.226                                    
-    ## Item_11 0.014  0.262                             
-    ## Item_12 0.014  0.014  0.260                      
-    ## Item_13 0.014  0.014  0.014  0.246               
-    ## Item_14 0.014  0.014  0.014  0.014  0.240        
-    ## Item_15 0.014  0.014  0.014  0.014  0.014  0.240
+    ## Item_10 0.234                                    
+    ## Item_11 0.017  0.249                             
+    ## Item_12 0.017  0.017  0.254                      
+    ## Item_13 0.017  0.017  0.017  0.256               
+    ## Item_14 0.017  0.017  0.017  0.017  0.251        
+    ## Item_15 0.017  0.017  0.017  0.017  0.017  0.239
 
 Podemos asumir que en la población, esta es la matriz que real, ¿en cuánto difiere esa matriz con esta?
 
@@ -728,21 +731,21 @@ residuals(cfa_ctt_model_tau)
     ## 
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
-    ## Item_1   0.008                                                        
-    ## Item_2   0.019  0.003                                                 
-    ## Item_3  -0.003 -0.006 -0.007                                          
-    ## Item_4  -0.001 -0.004 -0.012 -0.008                                   
-    ## Item_5   0.004 -0.004  0.003 -0.005 -0.001                            
-    ## Item_6   0.008  0.015  0.007 -0.007  0.002  0.006                     
-    ## Item_7   0.014 -0.007 -0.002  0.000  0.003  0.032  0.007              
-    ## Item_8   0.014  0.017  0.000  0.000  0.005  0.016  0.029  0.012       
-    ## Item_9   0.012  0.015 -0.013 -0.004  0.002  0.028  0.009  0.021  0.007
-    ## Item_10  0.016  0.014  0.000 -0.002  0.018 -0.012  0.033  0.024  0.026
-    ## Item_11 -0.015 -0.013 -0.014 -0.010 -0.014 -0.025  0.003 -0.002  0.012
-    ## Item_12  0.007 -0.012 -0.013 -0.017 -0.015  0.001 -0.005 -0.005 -0.024
-    ## Item_13  0.014  0.003 -0.007 -0.011 -0.012 -0.003 -0.004  0.001  0.004
-    ## Item_14  0.019  0.008 -0.014 -0.001 -0.009  0.010  0.012  0.022  0.015
-    ## Item_15  0.020  0.020 -0.004 -0.007  0.003  0.024  0.001  0.031  0.034
+    ## Item_1   0.007                                                        
+    ## Item_2   0.014  0.007                                                 
+    ## Item_3  -0.001  0.006 -0.003                                          
+    ## Item_4   0.004 -0.007  0.000 -0.004                                   
+    ## Item_5   0.002  0.000 -0.009 -0.014 -0.007                            
+    ## Item_6   0.003  0.011 -0.011 -0.003  0.001 -0.003                     
+    ## Item_7   0.001  0.008 -0.004 -0.001  0.004 -0.016  0.001              
+    ## Item_8   0.004  0.008  0.003  0.011  0.008  0.004  0.008  0.009       
+    ## Item_9   0.018  0.012 -0.006  0.007  0.000  0.005  0.005  0.021  0.009
+    ## Item_10  0.025  0.021  0.016  0.015 -0.012 -0.001 -0.008  0.011  0.034
+    ## Item_11  0.013 -0.002 -0.003 -0.002 -0.001 -0.012  0.002  0.002  0.011
+    ## Item_12 -0.011 -0.002 -0.012 -0.008 -0.014  0.000 -0.001  0.008 -0.008
+    ## Item_13 -0.016  0.016 -0.005 -0.021 -0.012 -0.010 -0.006 -0.007 -0.010
+    ## Item_14  0.003  0.000  0.001 -0.010 -0.016 -0.010 -0.006  0.000  0.007
+    ## Item_15  0.026  0.022  0.006  0.004 -0.006  0.000  0.014  0.014  0.034
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -753,12 +756,12 @@ residuals(cfa_ctt_model_tau)
     ## Item_7                                           
     ## Item_8                                           
     ## Item_9                                           
-    ## Item_10  0.013                                   
-    ## Item_11  0.015 -0.012                            
-    ## Item_12 -0.011 -0.022 -0.014                     
-    ## Item_13  0.015 -0.008 -0.007 -0.004              
-    ## Item_14  0.028 -0.007 -0.033  0.010  0.003       
-    ## Item_15  0.024 -0.005  0.000 -0.004  0.017  0.009
+    ## Item_10  0.012                                   
+    ## Item_11  0.008  0.001                            
+    ## Item_12 -0.008  0.010 -0.008                     
+    ## Item_13  0.032 -0.027 -0.021 -0.010              
+    ## Item_14  0.013 -0.001 -0.004 -0.007 -0.004       
+    ## Item_15  0.006  0.018  0.005 -0.005  0.011  0.011
 
 Respecto a los puntajes observados, acá comienza a versa la indeterminancia de los puntajes del factor, por el hecho de que los ítems entregan distinta cantidad de información para predecir los puntajes del factor.
 
@@ -776,35 +779,26 @@ En este caso, dado que los ítems tienen distinto grado de covarianza entre sí,
 ``` r
 congeneric = "f1=~Item_1+Item_2+Item_3+Item_4+Item_5+Item_6+Item_7+Item_8+Item_9+Item_10+Item_11+Item_12+Item_13+Item_14+Item_15"
 congeneric_model = sem(model=congeneric, data=base_datos, estimator="MLR")
-```
-
-    ## Warning in lav_model_vcov(lavmodel = lavmodel2, lavsamplestats = lavsamplestats, : lavaan WARNING:
-    ##     The variance-covariance matrix of the estimated parameters (vcov)
-    ##     does not appear to be positive definite! The smallest eigenvalue
-    ##     (= 1.352984e-18) is close to zero. This may be a symptom that the
-    ##     model is not identified.
-
-``` r
 fitted(congeneric_model)
 ```
 
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
-    ## Item_1  0.149                                                         
-    ## Item_2  0.025  0.136                                                  
-    ## Item_3  0.011  0.010  0.082                                           
-    ## Item_4  0.011  0.009  0.004  0.059                                    
-    ## Item_5  0.017  0.015  0.007  0.007  0.082                             
-    ## Item_6  0.027  0.023  0.011  0.010  0.016  0.234                      
-    ## Item_7  0.029  0.024  0.011  0.011  0.017  0.027  0.224               
-    ## Item_8  0.035  0.030  0.013  0.013  0.021  0.032  0.034  0.190        
-    ## Item_9  0.031  0.027  0.012  0.012  0.019  0.029  0.030  0.037  0.240 
-    ## Item_10 0.035  0.030  0.014  0.013  0.021  0.033  0.034  0.042  0.038 
-    ## Item_11 0.008  0.007  0.003  0.003  0.005  0.008  0.008  0.010  0.009 
-    ## Item_12 0.005  0.004  0.002  0.002  0.003  0.005  0.005  0.006  0.005 
-    ## Item_13 0.017  0.014  0.006  0.006  0.010  0.015  0.016  0.020  0.018 
-    ## Item_14 0.027  0.023  0.011  0.010  0.016  0.025  0.027  0.033  0.029 
-    ## Item_15 0.033  0.029  0.013  0.013  0.020  0.031  0.033  0.040  0.035 
+    ## Item_1  0.169                                                         
+    ## Item_2  0.030  0.143                                                  
+    ## Item_3  0.020  0.019  0.092                                           
+    ## Item_4  0.020  0.019  0.012  0.090                                    
+    ## Item_5  0.014  0.014  0.009  0.009  0.069                             
+    ## Item_6  0.019  0.018  0.012  0.012  0.009  0.230                      
+    ## Item_7  0.022  0.021  0.014  0.014  0.010  0.013  0.206               
+    ## Item_8  0.030  0.030  0.019  0.019  0.014  0.019  0.022  0.199        
+    ## Item_9  0.035  0.034  0.022  0.022  0.016  0.021  0.025  0.034  0.236 
+    ## Item_10 0.036  0.035  0.023  0.023  0.017  0.022  0.026  0.036  0.041 
+    ## Item_11 0.024  0.023  0.015  0.015  0.011  0.014  0.017  0.023  0.026 
+    ## Item_12 0.014  0.014  0.009  0.009  0.006  0.008  0.010  0.014  0.016 
+    ## Item_13 0.014  0.013  0.009  0.009  0.006  0.008  0.010  0.013  0.015 
+    ## Item_14 0.019  0.019  0.012  0.012  0.009  0.012  0.014  0.019  0.022 
+    ## Item_15 0.036  0.035  0.023  0.023  0.017  0.022  0.025  0.035  0.040 
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -815,12 +809,12 @@ fitted(congeneric_model)
     ## Item_7                                           
     ## Item_8                                           
     ## Item_9                                           
-    ## Item_10 0.239                                    
-    ## Item_11 0.010  0.250                             
-    ## Item_12 0.006  0.001  0.245                      
-    ## Item_13 0.020  0.005  0.003  0.242               
-    ## Item_14 0.033  0.008  0.005  0.015  0.243        
-    ## Item_15 0.040  0.010  0.006  0.019  0.031  0.249
+    ## Item_10 0.246                                    
+    ## Item_11 0.028  0.249                             
+    ## Item_12 0.016  0.011  0.246                      
+    ## Item_13 0.016  0.010  0.006  0.246               
+    ## Item_14 0.022  0.015  0.009  0.008  0.247        
+    ## Item_15 0.042  0.027  0.016  0.016  0.022  0.250
 
 la discrepancia entre la matriz reproducida por el modelo y la matriz original es la siguiente:
 
@@ -834,20 +828,20 @@ residuals(congeneric_model)
     ## $cov
     ##         Item_1 Item_2 Item_3 Item_4 Item_5 Item_6 Item_7 Item_8 Item_9
     ## Item_1   0.000                                                        
-    ## Item_2   0.008  0.000                                                 
-    ## Item_3   0.000 -0.002  0.000                                          
-    ## Item_4   0.003  0.000 -0.002  0.000                                   
-    ## Item_5   0.001 -0.005  0.010  0.003  0.000                            
-    ## Item_6  -0.005  0.006  0.011 -0.004  0.000  0.000                     
-    ## Item_7  -0.001 -0.017  0.001  0.003  0.000  0.019  0.000              
-    ## Item_8  -0.006  0.001  0.001  0.001 -0.001 -0.002  0.009  0.000       
-    ## Item_9  -0.005  0.003 -0.011 -0.002 -0.002  0.014 -0.007 -0.002  0.000
-    ## Item_10 -0.006 -0.002  0.001 -0.001  0.011 -0.031  0.013 -0.003  0.002
-    ## Item_11 -0.010 -0.006 -0.003  0.001 -0.005 -0.019  0.009  0.003  0.017
-    ## Item_12  0.016 -0.002 -0.001 -0.005 -0.004  0.011  0.004  0.004 -0.015
-    ## Item_13  0.011  0.003  0.001 -0.003 -0.008 -0.004 -0.006 -0.005  0.001
-    ## Item_14  0.006 -0.001 -0.011  0.003 -0.011 -0.001 -0.001  0.003  0.000
-    ## Item_15  0.000  0.006 -0.003 -0.006 -0.002  0.007 -0.017  0.006  0.012
+    ## Item_2   0.000  0.000                                                 
+    ## Item_3  -0.004  0.003  0.000                                          
+    ## Item_4   0.001 -0.009  0.005  0.000                                   
+    ## Item_5   0.004  0.003 -0.002 -0.007  0.000                            
+    ## Item_6   0.001  0.010 -0.006  0.002  0.009  0.000                     
+    ## Item_7  -0.004  0.004 -0.001  0.002  0.011 -0.013  0.000              
+    ## Item_8  -0.010 -0.005  0.000  0.008  0.010  0.002  0.004  0.000       
+    ## Item_9   0.000 -0.005 -0.011  0.002  0.000  0.001 -0.003  0.003  0.000
+    ## Item_10  0.005  0.002  0.010  0.008 -0.012 -0.006 -0.017 -0.008  0.010
+    ## Item_11  0.007 -0.008 -0.001  0.000  0.005 -0.010  0.002 -0.004  0.001
+    ## Item_12 -0.008  0.001 -0.004  0.000 -0.004  0.008  0.006  0.011 -0.007
+    ## Item_13 -0.013  0.019  0.003 -0.013 -0.001 -0.002  0.001 -0.004 -0.009
+    ## Item_14  0.001 -0.002  0.006 -0.005 -0.008 -0.005 -0.003 -0.002  0.003
+    ## Item_15  0.007  0.003  0.000 -0.002 -0.006 -0.005  0.006 -0.004  0.011
     ##         Itm_10 Itm_11 Itm_12 Itm_13 Itm_14 Itm_15
     ## Item_1                                           
     ## Item_2                                           
@@ -859,11 +853,11 @@ residuals(congeneric_model)
     ## Item_8                                           
     ## Item_9                                           
     ## Item_10  0.000                                   
-    ## Item_11  0.019  0.000                            
-    ## Item_12 -0.003 -0.009  0.000                     
-    ## Item_13  0.009  0.002  0.005  0.000              
-    ## Item_14  0.009  0.000 -0.023  0.008  0.000       
-    ## Item_15 -0.003 -0.001  0.009 -0.009  0.000  0.000
+    ## Item_11 -0.002  0.000                            
+    ## Item_12 -0.007  0.017  0.000                     
+    ## Item_13  0.033 -0.021 -0.010  0.000              
+    ## Item_14  0.008  0.002  0.004  0.002  0.000       
+    ## Item_15 -0.019  0.008  0.006 -0.004  0.006  0.000
 
 Respecto a los puntajes observados, acá comienza a versa la indeterminancia de los puntajes del factor, por el hecho de que los ítems entregan distinta cantidad de información para predecir los puntajes del factor.
 
